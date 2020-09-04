@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for sample e-commerce application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "debug": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergioamoruso91/miniecomapp.git"
+  },
+  "author": "Sergio Amoruso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sergioamoruso91/miniecomapp/issues"
+  },
+  "homepage": "https://github.com/sergioamoruso91/miniecomapp#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  }
+}
