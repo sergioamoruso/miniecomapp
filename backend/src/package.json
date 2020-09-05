@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/sergioamoruso91/miniecomapp#readme",
   "dependencies": {
+    "@types/jest": "^26.0.13",
     "axios": "^0.20.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
