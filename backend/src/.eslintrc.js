@@ -8,6 +8,8 @@ module.exports = {
     "parserOptions": {
         "ecmaVersion": 12
     },
+    plugins: ['jest', 'prettier'],
+    "extends": ["plugin:jest/recommended"],
     "rules": {
     }
 };
