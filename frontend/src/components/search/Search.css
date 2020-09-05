@@ -1,0 +1,23 @@
+.container { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffe600;
+    padding: 15px;
+}
+
+.logo {
+    border: none;
+    padding: 0px;
+    flex-grow: 0;
+    background-color: #ffe600;
+}
+
+.search-box {
+    flex-grow: 10;
+}
+
+.btn {
+    background: url('../../assets/magnifying-glass.png');
+    flex-grow: 5;
+}

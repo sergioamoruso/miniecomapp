@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
 
+import Search from './components/search/Search';
+
 function App() {
   return (
-    <div className="App">
-    <h1>E-commerce App</h1>
+    <div className="app">
+      <Search />
     </div>
   );
 }
