@@ -1,14 +1,14 @@
 const getCategories = require('./getCategories');
-const processItems = require('./processItems');
+const processSearchQueryResults = require('./processSearchQueryResults');
 const signResponse = require('./signResponse');
 
 module.exports = (data) => {
-    const response = {
-        categories: getCategories(data.filters),
-        items: processItems(data.results),
-    }
+  const response = {
+    categories: getCategories(data.filters),
+    items: processSearchQueryResults(data.results),
+  };
 
-    const signedResponse = signResponse(response);
+  const signedResponse = signResponse(response);
 
-    return signedResponse;
-}
+  return signedResponse;
+};

@@ -5,17 +5,22 @@ const processSearchQueryResponse = require('../services/processSearchQueryRespon
 
 module.exports = async (req, res) => {
   const requestUrl = `${config.mercadoLibreBaseUrl}/sites/${config.mercadoLibreSiteId}/search?q=${req.query.q}`;
-  logger.info({ requestUrl }, 'Executing MercadoLibre API request...');
+  logger.info(
+    { requestUrl },
+    'Executing MercadoLibre API search query request...'
+  );
 
   try {
     const raw = await axios.get(requestUrl);
     logger.info(
       { statusCode: raw.status },
-      'MercadoLibre API request successful'
+      'MercadoLibre API search query request successful'
     );
 
     const processed = processSearchQueryResponse(raw.data);
-    logger.info('MercadoLibre API response processed successfully');
+    logger.info(
+      'MercadoLibre API search query response processed successfully'
+    );
 
     res.status(200).send(processed);
   } catch (error) {
