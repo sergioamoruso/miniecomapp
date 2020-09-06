@@ -1,4 +1,4 @@
-const items = [
+const results = [
   {
     id: 'MLA876762332',
     site_id: 'MLA',
@@ -469,13 +469,13 @@ const items = [
   },
 ];
 
-describe('processItems should', () => {
+describe('processSearchQueryResults should', () => {
   beforeEach(() => {
-    sut = require('./processItems');
+    sut = require('./processSearchQueryResults');
   });
 
-  test('process items correctly', () => {
-    const result = sut(items);
+  test('process search query results correctly', () => {
+    const result = sut(results);
 
     const expected = [
       {
