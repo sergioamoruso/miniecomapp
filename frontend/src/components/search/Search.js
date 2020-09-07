@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import './Search.css';
-import logo from '../../assets/ml-logo.png';
+import React, { useState } from "react";
+import "./Search.css";
+import logo from "../../assets/logo.png";
 
 function Search() {
   const [searchText, setSearchText] = useState("");
@@ -11,19 +11,15 @@ function Search() {
   };
 
   return (
-      <form onSubmit={submitSearch} className="container">
-        <img src={logo} className="logo"/>
+    <form onSubmit={submitSearch} className="container">
+      <img src={logo} className="logo" alt="Mercado Libre Logo"/>
         <input
           type="text"
           placeholder="Nunca dejes de buscar"
           onChange={(e) => setSearchText(e.target.value)}
-          className="searchBox"
         />
-        <input
-          type="submit"
-          className="btn"
-        />
-      </form>
+        <input type="submit" value="" />
+    </form>
   );
 }
 
