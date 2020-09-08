@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import "./App.css";
 
-import Search from "./components/search/Search";
+import "./App.css";
+import Main from "./components/main/Main";
+import Results from "./components/results/Results";
+import Detail from "./components/detail/detail";
 
 function App() {
   const [items, setItems] = useState([]);
@@ -19,9 +21,36 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <Route exact path="/">
-          <Search executeSearchQueryRequest={executeSearchQueryRequest} />
-        </Route>
+        <Switch>
+          <Route exact path="/">
+            <Main executeSearchQueryRequest={executeSearchQueryRequest} />
+          </Route>
+
+          <Route
+            path="/items"
+            render={(props) => {
+              const params = new URLSearchParams(props.location.search);
+              const search = params.get("search");
+              console.log({
+                msg: "Received GET /items?search=",
+                value: search,
+              });
+
+              return (
+                <Results
+                  history={props.history}
+                  executeSearchQueryRequest={executeSearchQueryRequest}
+                  search={search}
+                  items={items}
+                />
+              );
+            }}
+          />
+
+          <Route path="/items/:id">
+            <Detail />
+          </Route>
+        </Switch>
       </div>
     </Router>
   );
