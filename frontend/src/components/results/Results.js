@@ -5,6 +5,8 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import Search from "../search/Search";
 import Item from "../item/Item";
 
+import "./Results.css";
+
 function timeout(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
