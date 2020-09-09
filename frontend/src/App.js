@@ -34,6 +34,7 @@ function App() {
           </Route>
 
           <Route
+            exact
             path="/items"
             render={(props) => {
               const params = new URLSearchParams(props.location.search);
@@ -55,9 +56,16 @@ function App() {
             }}
           />
 
-          <Route path="/items/:id">
-            <Detail />
-          </Route>
+          <Route
+            exact
+            path="/items/:id"
+            render={() => (
+              <Detail
+                executeSearchQueryRequest={executeSearchQueryRequest}
+                categories={categories}
+              />
+            )}
+          />
         </Switch>
       </div>
     </Router>
