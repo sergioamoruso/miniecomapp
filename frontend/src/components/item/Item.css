@@ -58,3 +58,7 @@ img {
   color: #999999;
   margin-left: 50px;
 }
+
+a {
+  text-decoration: none;
+}

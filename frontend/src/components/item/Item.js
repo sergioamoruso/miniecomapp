@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./Item.css";
 
@@ -35,7 +36,9 @@ function formatAmount(amount) {
 function Item({ item }) {
   return (
     <div className="item-container">
-      <img src={item.picture} />
+      <Link to={`/items/${item.id}`}>
+        <img src={item.picture} />
+      </Link>
 
       <div className="item-detail">
         <div className="item-price-icon-title">
@@ -47,7 +50,9 @@ function Item({ item }) {
               <div className="icon" alt="Free Shipping"></div>
             )}
           </div>
-          <div className="item-title">{item.title}</div>
+          <Link to={`/items/${item.id}`}>
+            <div className="item-title">{item.title}</div>
+          </Link>
         </div>
         <div className="item-state">{item.state_name}</div>
       </div>
