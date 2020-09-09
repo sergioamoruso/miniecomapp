@@ -1,41 +1,58 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
-function Item({ item }) {
-    
-    const getStyle = () => {
-        return {
-            display: 'flex',
-            background: '#f4f4f4',
-            padding: '10px',
-            border: '1px #ccc solid',
-        }
-    };
+import "./Item.css";
 
-    return (
-        <div style={getStyle()}>
-            <div style={{flexGrow: '1'}}>
-                <input type="checkbox" />
-            </div>
+function formatAmount(amount) {
+  const withCents = amount.toFixed(2);
+  const [intSection, decSection] = withCents.split(".");
+  const intSectionArray = intSection.split("");
+  const intSectionReverseArray = intSectionArray.reverse();
 
-            <div style={{flexGrow: '25', textAlign: 'left'}}>
-                {' '}{item.title}
-            </div>
+  const pointPositions = [];
+  for (let i = 0; i < intSectionReverseArray.length; i++) {
+    const remainder = i % 3;
+    if (i > 2 && remainder == 0) pointPositions.push(i);
+  }
 
-        </div>
-    )
+  const intSectionReverseArrayWithFloatingPoints = intSectionReverseArray.reduce(
+    (acc, cur, idx) => {
+      if (pointPositions.includes(idx)) {
+        acc.push(".");
+        acc.push(cur);
+      } else acc.push(cur);
+      return acc;
+    },
+    []
+  );
+
+  const orderedArrayWithFloatingPoints = intSectionReverseArrayWithFloatingPoints.reverse();
+  const intSectionWithFloatingPoints = orderedArrayWithFloatingPoints.join("");
+  const final = intSectionWithFloatingPoints.concat(",", decSection);
+
+  return final;
 }
 
-// Styles
-const btnStyle = {
-    color: '#fff',
-    borderRadius: '50%',
-    background: '#ff0000',
-    fontWeight: 'bold',
-    fontSize: '12px',
-    padding: '3px 5px',
-    cursor: 'pointer',
-    flexGrow: '1'
+function Item({ item }) {
+  return (
+    <div className="item-container">
+      <img src={item.picture} />
+
+      <div className="item-detail">
+        <div className="item-price-icon-title">
+          <div className="item-price-icon">
+            <div className="item-price">{`$ ${formatAmount(
+              item.price.amount
+            )}`}</div>
+            {item.free_shipping && (
+              <div className="icon" alt="Free Shipping"></div>
+            )}
+          </div>
+          <div className="item-title">{item.title}</div>
+        </div>
+        <div className="item-state">{item.state_name}</div>
+      </div>
+    </div>
+  );
 }
 
 export default Item;
