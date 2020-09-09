@@ -4,7 +4,7 @@ const logger = require('pino')({ name: 'Search Query Handler' });
 const processSearchQueryResponse = require('../services/processSearchQueryResponse');
 
 module.exports = async (req, res) => {
-  const requestUrl = `${config.mercadoLibreBaseUrl}/sites/${config.mercadoLibreSiteId}/search?q=${req.query.q}`;
+  const requestUrl = `${config.mercadoLibreBaseUrl}/sites/${config.mercadoLibreSiteId}/search?q=${req.query.q}&limit=4`;
   logger.info(
     { requestUrl },
     'Executing MercadoLibre API search query request...'
