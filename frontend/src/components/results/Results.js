@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 import Search from "../search/Search";
+import Breadcrumb from "../breadcrumb/Breadcrumb";
 import Item from "../item/Item";
 
 import "./Results.css";
@@ -11,14 +12,14 @@ function timeout(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function Results({ history, executeSearchQueryRequest, search, items }) {
+function Results({ history, executeSearchQueryRequest, query, categories, items }) {
   const [isLoading, setIsLoading] = useState(false); // indicates whether to display loading icon or not
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     const submitUrlSearch = async () => {
       if (history.action !== "REPLACE") {
-        await submitSearch(search);
+        await submitSearch(query);
       }
     };
 
@@ -39,13 +40,13 @@ function Results({ history, executeSearchQueryRequest, search, items }) {
   return (
     <div>
       <Search setSearchText={setSearchText} submitSearch={submitSearch} />
-      <h1>Results</h1>
-
+      <Breadcrumb categories={categories} />
       {isLoading && (
         <FontAwesomeIcon className="spinner" icon={faSpinner} spin size="3x" />
       )}
-
-      {!isLoading && items.map((item) => <Item key={item.id} item={item} />)}
+      <div className="item-list">
+        {!isLoading && items.map((item) => <Item key={item.id} item={item} />)}
+      </div>
     </div>
   );
 }
