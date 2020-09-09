@@ -1,0 +1,12 @@
+.detail-container {
+  background-color: #ffffff;
+  display: flex;
+  padding: 0px;
+  border: solid 1px #eeeeee;
+  margin: 0px 15% 10% 15%;
+}
+
+.detail-image {
+    width: 680px;
+    height: 680px;
+  }
