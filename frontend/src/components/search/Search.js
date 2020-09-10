@@ -15,14 +15,16 @@ function Search() {
   };
 
   return (
-    <form onSubmit={onSubmit} className="container">
-      <img src={logo} className="logo" alt="Mercado Libre Logo" />
-      <input
-        type="text"
-        placeholder="Nunca dejes de buscar"
-        onChange={(e) => setSearchText(e.target.value)}
-      />
-      <input type="submit" value="" />
+    <form onSubmit={onSubmit} className="search-container">
+      <div className="logo-search-bar">
+        <img src={logo} className="logo" alt="Mercado Libre Logo" />
+        <input
+          type="text"
+          placeholder="Nunca dejes de buscar"
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+        <input type="submit" value="" />
+      </div>
     </form>
   );
 }
