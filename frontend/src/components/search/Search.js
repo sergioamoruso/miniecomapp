@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import "./Search.css";
+import { useHistory } from "react-router-dom";
+
 import logo from "../../assets/logo.png";
 
-function Search({ setSearchText, submitSearch }) {
+import "./Search.css";
+
+function Search() {
+  const [searchText, setSearchText] = useState("");
+  const history = useHistory();
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await submitSearch();
-  }
+    history.push(`/items?search=${searchText}`);
+  };
 
   return (
     <form onSubmit={onSubmit} className="container">

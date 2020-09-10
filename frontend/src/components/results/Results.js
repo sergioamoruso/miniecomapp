@@ -1,45 +1,42 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 
-import Search from "../search/Search";
 import Breadcrumb from "../breadcrumb/Breadcrumb";
 import Item from "../item/Item";
 
 import "./Results.css";
 
-function timeout(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-function Results({ history, executeSearchQueryRequest, query, categories, items }) {
+function Results() {
   const [isLoading, setIsLoading] = useState(false); // indicates whether to display loading icon or not
-  const [searchText, setSearchText] = useState("");
+  const [items, setItems] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
-    const submitUrlSearch = async () => {
-      if (history.action !== "REPLACE") {
-        await submitSearch(query);
-      }
+    const getItems = async () => {
+      setIsLoading(true);
+      const query = new URLSearchParams(location.search);
+      const requestUrl = `/api/items?q=${query.get("search")}`;
+      console.log({ msg: "Executing request...", value: requestUrl });
+      const response = await axios.get(requestUrl);
+      console.log({
+        msg: "Request successful",
+        categories: response.data.categories,
+        items: response.data.items,
+      });
+      setCategories(response.data.categories);
+      setItems(response.data.items);
+      setIsLoading(false);
     };
 
-    submitUrlSearch();
-  }, []);
-
-  const submitSearch = async (input) => {
-    setIsLoading(true);
-    await executeSearchQueryRequest(input || searchText);
-    await timeout(2000); // Timeout for UX purposes only (let the user know that the search is being processed)
-    setIsLoading(false);
-    input || history.push({
-      pathname: "/items",
-      search: `?search=${searchText}`,
-    });
-  };
+    getItems();
+  }, [location]);
 
   return (
     <div>
-      <Search setSearchText={setSearchText} submitSearch={submitSearch} />
       <Breadcrumb categories={categories} />
       {isLoading && (
         <FontAwesomeIcon className="spinner" icon={faSpinner} spin size="3x" />
