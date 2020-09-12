@@ -11,7 +11,7 @@ function Search() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    history.push(`/items?search=${searchText}`);
+    if (searchText != "") history.push(`/items?search=${searchText}`);
   };
 
   return (
