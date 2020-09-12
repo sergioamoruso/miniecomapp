@@ -10,14 +10,14 @@ import Item from "../item/Item";
 import "./Results.css";
 
 function Results() {
-  const [isLoading, setIsLoading] = useState(false); // indicates whether to display loading icon or not
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [dataRetrieved, setDataRetrieved] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const getItems = async () => {
-      setIsLoading(true);
+      setDataRetrieved(false);
       const query = new URLSearchParams(location.search);
       const requestUrl = `/api/items?q=${query.get("search")}`;
       console.log({ msg: "Executing request...", value: requestUrl });
@@ -29,7 +29,7 @@ function Results() {
       });
       setCategories(response.data.categories);
       setItems(response.data.items);
-      setIsLoading(false);
+      setDataRetrieved(true);
     };
 
     getItems();
@@ -38,11 +38,11 @@ function Results() {
   return (
     <div>
       <Breadcrumb categories={categories} />
-      {isLoading && (
+      {!dataRetrieved && (
         <FontAwesomeIcon className="spinner" icon={faSpinner} spin size="3x" />
       )}
       <div className="item-list">
-        {!isLoading && items.map((item) => <Item key={item.id} item={item} />)}
+        {dataRetrieved && items.map((item) => <Item key={item.id} item={item} />)}
       </div>
     </div>
   );
