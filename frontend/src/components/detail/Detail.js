@@ -13,15 +13,10 @@ const translateCondition = (condition) => {
 };
 
 const processDecimals = (decimals) => {
-  if (!decimals) return '00';
-
   let converted = decimals.toString();
-
-  if (converted.length == 1)
-    converted = converted.concat('0');
-
+  if (converted.length == 1) converted = converted.concat("0");
   return converted;
-}
+};
 
 function formatAmount(amount, includeDecimals = false) {
   const withCents = amount.toFixed(2);
@@ -48,7 +43,9 @@ function formatAmount(amount, includeDecimals = false) {
 
   const orderedArrayWithFloatingPoints = intSectionReverseArrayWithFloatingPoints.reverse();
   const intSectionWithFloatingPoints = orderedArrayWithFloatingPoints.join("");
-  const final = includeDecimals ? intSectionWithFloatingPoints.concat(",", decSection) : intSectionWithFloatingPoints;
+  const final = includeDecimals
+    ? intSectionWithFloatingPoints.concat(",", decSection)
+    : intSectionWithFloatingPoints;
 
   return final;
 }
@@ -57,7 +54,6 @@ function Detail() {
   const { id } = useParams();
   const [item, setItem] = useState({});
   const [dataRetrieved, setDataRetrieved] = useState(false);
-  const categories = [];
 
   useEffect(() => {
     const getItemDetail = async () => {
@@ -73,38 +69,45 @@ function Detail() {
     };
 
     getItemDetail();
-    
   }, []);
 
   return (
     <div>
-      <Breadcrumb categories={categories} />
       {!dataRetrieved && (
         <FontAwesomeIcon className="spinner" icon={faSpinner} spin size="3x" />
       )}
       {dataRetrieved && (
-        <div className="detail-container">
-          <div className="detail-image-condition-sold-title-price-button">
-            <img className="detail-image" src={item.picture} />
-            <div className="detail-condition-sold-title-price-button">
-              <div className="detail-condition-sold">
-                {`${translateCondition(item.condition)} - ${
-                  item.sold_quantity
-                } vendidos`}
+        <div>
+          <Breadcrumb categories={item.categories} />
+          <div className="detail-container">
+            <div className="detail-image-condition-sold-title-price-button">
+              <img className="detail-image" src={item.picture} />
+              <div className="detail-condition-sold-title-price-button">
+                <div className="detail-condition-sold">
+                  {`${translateCondition(item.condition)} - ${
+                    item.sold_quantity
+                  } vendidos`}
+                </div>
+                <div className="detail-title">{item.title}</div>
+                <div className="detail-price-cents">
+                  <div className="detail-price">{`$ ${formatAmount(
+                    item.price.amount
+                  )}`}</div>
+                  <div className="detail-cents">{`${processDecimals(
+                    item.price.decimals
+                  )}`}</div>
+                </div>
+                <button className="detail-button">Comprar</button>
               </div>
-              <div className="detail-title">{item.title}</div>
-              <div className="detail-price-cents">
-              <div className="detail-price">{`$ ${formatAmount(item.price.amount)}`}</div>
-              <div className="detail-cents">{`${processDecimals(item.price.decimals)}`}</div>
-              </div>
-              <button className="detail-button">Comprar</button>
             </div>
-          </div>
-          <div className="detail-description-title-detail">
-          <div className="detail-description-title">
-            Descripción del producto
-          </div>
-          <div className="detail-description-detail">{item.description}</div>
+            <div className="detail-description-title-detail">
+              <div className="detail-description-title">
+                Descripción del producto
+              </div>
+              <div className="detail-description-detail">
+                {item.description}
+              </div>
+            </div>
           </div>
         </div>
       )}
