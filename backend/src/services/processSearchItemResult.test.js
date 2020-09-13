@@ -1431,13 +1431,78 @@ const description = {
   },
 };
 
+const category = {
+  id: 'MLA1055',
+  name: 'Celulares y Smartphones',
+  picture:
+    'http://resources.mlstatic.com/category/images/fdca1620-3b63-4af2-bc0b-aeed17048d5d.png',
+  permalink: null,
+  total_items_in_this_category: 65780,
+  path_from_root: [
+    {
+      id: 'MLA1051',
+      name: 'Celulares y Teléfonos',
+    },
+    {
+      id: 'MLA1055',
+      name: 'Celulares y Smartphones',
+    },
+  ],
+  children_categories: [],
+  attribute_types: 'variations',
+  settings: {
+    adult_content: false,
+    buying_allowed: true,
+    buying_modes: ['buy_it_now', 'auction'],
+    catalog_domain: 'MLA-CELLPHONES',
+    coverage_areas: 'not_allowed',
+    currencies: ['ARS'],
+    fragile: false,
+    immediate_payment: 'required',
+    item_conditions: ['not_specified', 'used', 'new'],
+    items_reviews_allowed: false,
+    listing_allowed: true,
+    max_description_length: 50000,
+    max_pictures_per_item: 12,
+    max_pictures_per_item_var: 10,
+    max_sub_title_length: 70,
+    max_title_length: 60,
+    maximum_price: null,
+    minimum_price: 22,
+    mirror_category: null,
+    mirror_master_category: null,
+    mirror_slave_categories: [],
+    price: 'required',
+    reservation_allowed: 'not_allowed',
+    restrictions: [],
+    rounded_address: false,
+    seller_contact: 'not_allowed',
+    shipping_modes: ['me1', 'custom', 'me2', 'not_specified'],
+    shipping_options: ['custom', 'carrier'],
+    shipping_profile: 'optional',
+    show_contact_information: false,
+    simple_shipping: 'optional',
+    stock: 'required',
+    sub_vertical: 'smartphones',
+    subscribable: false,
+    tags: [],
+    vertical: 'consumer_electronics',
+    vip_subdomain: 'articulo',
+    buyer_protection_programs: ['delivered', 'undelivered'],
+    status: 'enabled',
+  },
+  meta_categ_id: null,
+  attributable: false,
+  date_created: '2018-04-25T08:12:56.000Z',
+};
+
 describe('processSearchItemResult should', () => {
   beforeEach(() => {
     sut = require('./processSearchItemResult');
   });
 
   test('process search item result correctly', () => {
-    const result = sut(item, description);
+    const result = sut(item, description, category);
 
     const expected = {
       id: 'MLA876762332',
@@ -1445,7 +1510,7 @@ describe('processSearchItemResult should', () => {
       price: {
         currency: 'ARS',
         amount: 35490,
-        decimals: null,
+        decimals: 0,
       },
       picture: 'http://http2.mlstatic.com/D_698020-MLA41797493867_052020-I.jpg',
       condition: 'new',
@@ -1453,6 +1518,7 @@ describe('processSearchItemResult should', () => {
       sold_quantity: 1,
       description:
         'Enfocate en lo importante\nEl novedoso sistema operativo Android 10 incorpora respuestas inteligentes y acciones sugeridas para todas tus aplicaciones. Además, incluye la función de Bienestar Digital y el Tema Oscuro, para que evites distracciones y logres una mayor concentración.\n\nMayor rendimiento\nSu memoria RAM de 4 GB te permitirá ejecutar varias aplicaciones al mismo tiempo, jugar y navegar con gran rapidez y sin inconvenientes.\n\nMás para ver\nCon su pantalla IPS de 6.4", disfrutá de colores intensos y mayor nitidez en todos tus contenidos.\n\nGran capacidad de almacenamiento\nCon su memoria interna de 64 GB siempre tendrás espacio para almacenar archivos y documentos importantes. Además, podrás guardar películas, series y videos para reproducirlos cuando quieras sin conexión.\n\nBatería superior\n¡Desenchufate! Con la súper batería de 4000 mAh, tendrás energía por mucho más tiempo para jugar, ver series o trabajar sin necesidad de recargar tu teléfono.\n\nFotografía profesional en tu bolsillo\nDescubrí infinitas posibilidades para tus fotos con las 3 cámaras principales de tu equipo. Con su cámara de poca profundidad, lograrás fondos difuminados, la de ángulo amplio te permitirá capturar fotos brillantes y con la ultra gran angular obtendrás imágenes panorámicas excepcionales.\n\n Además, el dispositivo cuenta con cámara frontal de 8 Mpx para que puedas sacarte divertidas selfies o hacer videollamadas.\n\nTecnología premium\nMaximizá tu seguridad y asegurate de que solo vos puedas desbloquear el equipo. Gracias al sensor de huella dactilar, podrás habilitar tu dispositivo con solo un toque. Además, cuenta con reconocimiento facial que se activa rápidamente al colocar la pantalla frente a tu rostro.',
+      categories: ['Celulares y Teléfonos', 'Celulares y Smartphones'],
     };
 
     expect(result).toEqual(expected);

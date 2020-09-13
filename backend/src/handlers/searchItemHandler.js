@@ -28,9 +28,23 @@ module.exports = async (req, res) => {
       'MercadoLibre API search item description request successful'
     );
 
+    const categoryId = itemDataResponse.data.category_id;
+    const itemCategoryRequestUrl = `${config.mercadoLibreBaseUrl}/categories/${categoryId}`;
+
+    logger.info(
+      { itemCategoryRequestUrl },
+      'Executing MercadoLibre API item category request...'
+    );
+    const itemCategoryResponse = await axios.get(itemCategoryRequestUrl);
+    logger.info(
+      { statusCode: itemCategoryResponse.status },
+      'MercadoLibre API item category request successful'
+    );
+
     const processed = processSearchItemResponse(
       itemDataResponse.data,
-      itemDescriptionResponse.data
+      itemDescriptionResponse.data,
+      itemCategoryResponse.data
     );
     logger.info(
       'MercadoLibre API search item and description responses processed successfully'
