@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Search from "./components/search/Search";
 import Results from "./components/results/Results";
 import Detail from "./components/detail/Detail";
+import NoMatch from "./pages/nomatch/NoMatch";
 
 import "./App.css";
 
@@ -18,6 +19,8 @@ function App() {
           <Route exact path="/items" render={() => <Results />} />
 
           <Route exact path="/items/:id" render={() => <Detail />} />
+
+          <Route path="*" render={() => <NoMatch />} />
         </Switch>
       </div>
     </Router>
