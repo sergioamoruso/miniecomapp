@@ -4,8 +4,8 @@
   "description": "Backend for sample e-commerce application",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "debug": "nodemon server.js",
+    "start": "node src/server.js",
+    "debug": "nodemon src/server.js",
     "test": "jest"
   },
   "repository": {
