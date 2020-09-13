@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
 
 import Breadcrumb from "../breadcrumb/Breadcrumb";
+import Error from "../../components/error/Error";
+
+import apiClient from "../../services/apiClient";
 
 import "./Detail.css";
 
@@ -51,25 +53,26 @@ function formatAmount(amount, includeDecimals = false) {
 }
 
 function Detail() {
-  const { id } = useParams();
   const [item, setItem] = useState({});
   const [dataRetrieved, setDataRetrieved] = useState(false);
+  const [serverError, setServerError] = useState(false);
+  const { id } = useParams();
 
   useEffect(() => {
     const getItemDetail = async () => {
-      const requestUrl = `/api/items/${id}`;
-      console.log({ msg: "Executing request...", value: requestUrl });
-      const response = await axios.get(requestUrl);
-      console.log({
-        msg: "Request successful",
-        item: response.data.item,
-      });
-      setItem(response.data.item);
-      setDataRetrieved(true);
+      const data = await apiClient.getItemDetail(id);
+      if (data) {
+        setItem(data.item);
+        setDataRetrieved(true);
+      } else {
+        setServerError(true);
+      }
     };
 
     getItemDetail();
   }, []);
+
+  if (serverError) return <Error />;
 
   return (
     <div>
