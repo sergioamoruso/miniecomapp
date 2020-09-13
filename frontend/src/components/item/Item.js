@@ -56,6 +56,7 @@ function Item({ item }) {
         </div>
         <div className="item-state">{item.state_name}</div>
       </div>
+      <div className="item-detail-line"></div>
     </div>
   );
 }
