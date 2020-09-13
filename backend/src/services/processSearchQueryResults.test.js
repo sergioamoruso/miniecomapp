@@ -484,12 +484,13 @@ describe('processSearchQueryResults should', () => {
         price: {
           currency: 'ARS',
           amount: 35490,
-          decimals: null,
+          decimals: 0,
         },
         picture:
           'http://http2.mlstatic.com/D_698020-MLA41797493867_052020-I.jpg',
         condition: 'new',
         free_shipping: true,
+        state_name: 'Buenos Aires',
       },
       {
         id: 'MLA871241800',
@@ -497,12 +498,13 @@ describe('processSearchQueryResults should', () => {
         price: {
           currency: 'ARS',
           amount: 33699,
-          decimals: null,
+          decimals: 0,
         },
         picture:
           'http://http2.mlstatic.com/D_884450-MLA41632030529_052020-I.jpg',
         condition: 'new',
         free_shipping: true,
+        state_name: 'Capital Federal',
       },
     ];
 
