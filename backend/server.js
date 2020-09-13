@@ -1,7 +1,7 @@
 const express = require('express');
-const config = require('./services/config');
-const searchQueryHandler = require('./handlers/searchQueryHandler');
-const searchItemHandler = require('./handlers/searchItemHandler');
+const config = require('./src/services/config');
+const searchQueryHandler = require('./src/handlers/searchQueryHandler');
+const searchItemHandler = require('./src/handlers/searchItemHandler');
 
 const PORT = config.serverPort;
 
