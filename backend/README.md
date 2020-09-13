@@ -1,4 +1,6 @@
-# miniecomapp - BACKEND
+# BACKEND (miniecomapp)
+
+<br>
 
 ## Table of Contents
 
@@ -28,9 +30,9 @@ Folder dedicated to miniecomapp backend development.
 ```
 backend
 └─ README.md
-└─ server.js
 └─ src
-    └── handlers
+    ├── server.js
+    ├── handlers
     └── services
 ```
 
@@ -47,7 +49,9 @@ The backend exposes the following endpoints:
 * [SEARCH QUERY](#search-query)
 * [SEARCH ITEM](#search-item)
 
-### SEARCH QUERY
+<br>
+
+### SEARCH QUERY ENDPOINT
 
 - URL: `/api/items`
 - METHOD: `GET`
@@ -170,7 +174,9 @@ Contents of **price**:
 }
 ```
 
-### SEARCH ITEM
+<br>
+
+### SEARCH ITEM ENDPOINT
 
 - URL: `/api/items/:id`
 - METHOD: `GET`
@@ -260,8 +266,6 @@ Contents of **price**:
 ## Local environment setup
 
 These instructions will help to get a copy of the project up and running on a local machine for development and testing purposes.
-
-<br>
 
 ### Prerequisites
 
