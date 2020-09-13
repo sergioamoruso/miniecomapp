@@ -7,11 +7,11 @@ This project consists on a sample e-commerce application which implements a Node
 ```
 miniecommapp
 |
-└─── backend
-|     └─── README.md
-└─── frontend
-|     └─── README.md
-└─── README.md
+└── backend
+|     └── README.md
+└── frontend
+|     └── README.md
+└── README.md
 ```
 
 <br>
@@ -33,5 +33,5 @@ git clone https://github.com/sergioamoruso91/miniecomapp.git
 #### STEP 2: Run script
 
 ```
-
+npm run set-up-and-start-application
 ```

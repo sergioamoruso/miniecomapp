@@ -1,0 +1,24 @@
+{
+  "name": "miniecomapp",
+  "version": "1.0.0",
+  "description": "Sample e-commerce application with Node.js back-end and React front-end",
+  "main": "index.js",
+  "scripts": {
+    "set-up-and-start-backend": "cd backend && npm install && npm start",
+    "set-up-and-start-frontend": "cd frontend && npm install && npm start",
+    "set-up-and-start-application": "concurrently \"npm run set-up-and-start-backend\" \"npm run set-up-and-start-frontend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergioamoruso91/miniecomapp.git"
+  },
+  "author": "Sergio Amoruso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sergioamoruso91/miniecomapp/issues"
+  },
+  "homepage": "https://github.com/sergioamoruso91/miniecomapp#readme",
+  "dependencies": {
+    "concurrently": "^5.3.0"
+  }
+}
