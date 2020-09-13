@@ -2,7 +2,6 @@
   background-color: #ffffff;
   display: flex;
   padding: 0px;
-  border: solid 1px #eeeeee;
 }
 
 .item-image {
@@ -56,9 +55,16 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   color: #999999;
-  margin-left: 200px;
+  margin-left: 100px;
 }
 
 a {
   text-decoration: none;
+}
+
+.item-detail-line {
+  border-bottom: 1px solid #eeeeee;
+  position: absolute;
+  left: 12%;
+  right: 12%;
 }
