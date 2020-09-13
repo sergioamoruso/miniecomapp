@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Search from "./components/search/Search";
-import Results from "./components/results/Results";
-import Detail from "./components/detail/Detail";
+import Results from "./pages/results/Results";
+import Detail from "./pages/detail/Detail";
 import NoMatch from "./pages/nomatch/NoMatch";
 
 import "./App.css";
