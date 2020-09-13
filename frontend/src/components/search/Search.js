@@ -7,11 +7,15 @@ import "./Search.css";
 
 function Search() {
   const [searchText, setSearchText] = useState("");
+  const [previousSearchText, setPreviousSearchText] = useState("");
   const history = useHistory();
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (searchText != "") history.push(`/items?search=${searchText}`);
+    if (searchText != "" && searchText != previousSearchText) {
+      history.push(`/items?search=${searchText}`);
+      setPreviousSearchText(searchText);
+    }
   };
 
   return (
