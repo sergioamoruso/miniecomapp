@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { useLocation } from "react-router-dom";
 
-import Breadcrumb from "../breadcrumb/Breadcrumb";
-import Item from "../item/Item";
+import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
+import Item from "../../components/item/Item";
 import Error from "../../components/error/Error";
 
 import apiClient from "../../services/apiClient";
