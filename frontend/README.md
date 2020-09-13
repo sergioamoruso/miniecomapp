@@ -1,4 +1,6 @@
-# UI
+# FRONTEND (miniecomapp)
+
+<br>
 
 ## Table of Contents
 
@@ -11,7 +13,7 @@
 
 ## Overview
 
-Folder dedicated to UI development.
+Folder dedicated to frontend development.
 
 <br>
 
@@ -26,14 +28,14 @@ Folder dedicated to UI development.
 
 ```
 frontend
-└─── README.md
-└─── src
-    ├── App.js
-    ├── assets
-    ├── components
-    ├── helpers
-    ├── pages
-    └── services
+└── README.md
+└── src
+     ├── App.js
+     ├── assets
+     ├── components
+     ├── helpers
+     ├── pages
+     └── services
 ```
 
 * **App.js:** Frontend entrypoint.
