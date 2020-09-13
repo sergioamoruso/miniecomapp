@@ -20,6 +20,7 @@ function Results() {
 
   useEffect(() => {
     const getItems = async () => {
+      setDataRetrieved(false);
       const queryParams = new URLSearchParams(location.search);
       const query = queryParams.get("search");
       const data = await apiClient.getItems(query);
