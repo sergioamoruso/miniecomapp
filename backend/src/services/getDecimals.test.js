@@ -10,13 +10,13 @@ describe('getDecimals should', () => {
   });
 
   test('return correct result when there is one decimal', () => {
-    const expected = 9;
+    const expected = 90;
     const result = sut(499.9);
     expect(result).toBe(expected);
   });
 
-  test('return null when there are no decimals', () => {
-    const expected = null;
+  test('return 0 when there are no decimals', () => {
+    const expected = 0;
     const result = sut(499);
     expect(result).toBe(expected);
   });
