@@ -30,8 +30,9 @@ The following steps will get both the server and client running up locally.
 git clone https://github.com/sergioamoruso91/miniecomapp.git
 ```
 
-#### STEP 2: Run script
+#### STEP 2: Run script to set up and start application
 
 ```
+cd miniecomapp
 npm run set-up-and-start-application
 ```
