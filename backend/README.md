@@ -14,7 +14,7 @@
 
 ## Overview
 
-Folder dedicated to miniecomapp backend development.
+Folder dedicated to miniecomapp backend (server) development.
 
 <br>
 
@@ -187,7 +187,7 @@ Contents of **price**:
 
 #### Process
 
-When receiving a request through this endpoint, the backend will send 3 requests to Mercado Libre API, to get the **item** (using provided item ID), **item description** (using provided item ID) and **item categories** (using item category ID). If there is an error, it will return a 500 status code with the error details; otherwise it will return a 200 status code with the reponse payload. 
+When receiving a request through this endpoint, the backend will send 3 requests to Mercado Libre API, to get the **item** (using provided item ID), **item description** (using provided item ID) and **item categories** (using the retrieved item category ID). If there is an error, it will return a 500 status code with the error details; otherwise it will return a 200 status code with the reponse payload. 
 
 #### Request
 
@@ -260,7 +260,6 @@ Contents of **price**:
 }
 ```
 
-
 <br>
 
 ## Local environment setup
@@ -269,7 +268,7 @@ These instructions will help to get a copy of the project up and running on a lo
 
 ### Prerequisites
 
-* Node.js >= 6 - https://nodejs.org/
+* [Node.js](https://nodejs.org/) (project was made using Node.js v12.16)
 
 #### STEP 1: Clone the repo
 
@@ -291,8 +290,8 @@ Create a new file named **.env** in **backend** and add the following environmen
 * [OPTIONAL] **PORT:** Server port number. If not provided, the default is 5000.
 * [MANDATORY] **MERCADOLIBRE_BASE_URL:** Mercado Libre API base URL. Check [documentation](https://developers.mercadolibre.com/api-docs/).
 * [MANDATORY] **MERCADOLIBRE_SITE_ID:** Mercado Libre site ID. Check [documentation](https://developers.mercadolibre.com/api-docs/).
-* [OPTIONAL] **API_SIGNATURE_NAME:** API payload signature name.
-* [OPTIONAL] **API_SIGNATURE_LASTNAME:** API payload signature lastname.
+* [OPTIONAL] **API_SIGNATURE_NAME:** API payload signature name. If not provided, will be null.
+* [OPTIONAL] **API_SIGNATURE_LASTNAME:** API payload signature lastname. If not provided, will be null.
 
 ##### Example
 
@@ -304,7 +303,7 @@ API_SIGNATURE_NAME=John
 API_SIGNATURE_LASTNAME=Smith
 ```
 
-#### STEP 4: Start the API
+#### STEP 4: Start backend server
 
 ```
 npm start
