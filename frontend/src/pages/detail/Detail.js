@@ -44,34 +44,37 @@ function Detail() {
         <div>
           <Breadcrumb categories={item.categories} />
           <div className="detail-container">
-            <div className="detail-image-condition-sold-title-price-button">
+
+            <div className="detail-image-description">
               <img className="detail-image" src={item.picture} />
-              <div className="detail-condition-sold-title-price-button">
-                <div className="detail-condition-sold">
-                  {`${formatCondition(item.condition)} - ${
-                    item.sold_quantity
+              <div className="detail-description-title-detail">
+                <div className="detail-description-title">
+                  Descripción del producto
+              </div>
+                <div className="detail-description-detail">
+                  {item.description}
+                </div>
+              </div>
+            </div>
+
+            <div className="detail-condition-sold-title-price-button">
+              <div className="detail-condition-sold">
+                {`${formatCondition(item.condition)} - ${item.sold_quantity
                   } vendidos`}
-                </div>
-                <div className="detail-title">{item.title}</div>
-                <div className="detail-price-cents">
-                  <div className="detail-price">{`$ ${formatAmount(
-                    item.price.amount
-                  )}`}</div>
-                  <div className="detail-cents">{`${formatDecimals(
-                    item.price.decimals
-                  )}`}</div>
-                </div>
-                <button className="detail-button">Comprar</button>
               </div>
+              <div className="detail-title">{item.title}</div>
+              <div className="detail-price-cents">
+                <div className="detail-price">{`$ ${formatAmount(
+                  item.price.amount
+                )}`}</div>
+                <div className="detail-cents">{`${formatDecimals(
+                  item.price.decimals
+                )}`}</div>
+              </div>
+              <button className="detail-button">Comprar</button>
             </div>
-            <div className="detail-description-title-detail">
-              <div className="detail-description-title">
-                Descripción del producto
-              </div>
-              <div className="detail-description-detail">
-                {item.description}
-              </div>
-            </div>
+
+
           </div>
         </div>
       )}
