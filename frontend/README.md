@@ -13,7 +13,7 @@
 
 ## Overview
 
-Folder dedicated to frontend development.
+Folder dedicated to miniecomapp frontend (client) development.
 
 <br>
 
@@ -51,6 +51,10 @@ frontend
 
 These instructions will help to get the client running on a local machine for development and testing purposes.
 
+### Prerequisites
+
+* [Node.js](https://nodejs.org/) (project was made using Node.js v12.16)
+
 #### STEP 1: Clone the repo
 
 ```
@@ -64,7 +68,7 @@ cd frontend
 npm install
 ```
 
-#### STEP 3: Start the UI
+#### STEP 3: Start frontend client
 
 ```
 npm start
