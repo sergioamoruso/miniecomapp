@@ -4,9 +4,9 @@
   "description": "Sample e-commerce application with Node.js back-end and React front-end",
   "main": "index.js",
   "scripts": {
-    "set-up-and-start-backend": "cd backend && npm install && npm start",
-    "set-up-and-start-frontend": "cd frontend && npm install && npm start",
-    "set-up-and-start-application": "npm install && concurrently \"npm run set-up-and-start-backend\" \"npm run set-up-and-start-frontend\""
+    "startback": "cd backend && npm install && npm start",
+    "startfront": "cd frontend && npm install && npm start",
+    "startapp": "npm install && concurrently \"npm run startback\" \"npm run startfront\""
   },
   "repository": {
     "type": "git",
